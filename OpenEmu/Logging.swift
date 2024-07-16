@@ -30,15 +30,24 @@ extension OSLog {
     static let `default` = OSLog(subsystem: "org.openemu.OpenEmu", category: "default")
     static let `import` = OSLog(subsystem: "org.openemu.OpenEmu", category: "import")
     static let library = OSLog(subsystem: "org.openemu.OpenEmu", category: "library")
+    static let download = OSLog(subsystem: "org.openemu.OpenEmu", category: "download")
     
     static let event_keyboard = OSLog(subsystem: "org.openemu.OpenEmu.event", category: "keyboard")
     static let event_hid = OSLog(subsystem: "org.openemu.OpenEmu.event", category: "hid")
 }
 
+// TODO: Replace with Logger.xyz.debug
 /// Logs a string in debug mode.
 func DLog(_ message: @autoclosure () -> String, fileID: String = #fileID, function: String = #function, line: Int = #line)
 {
-    #if DEBUG
-        NSLog("\(fileID):\(line): \(function): %@", message())
-    #endif
+#if DEBUG
+    NSLog("\(fileID):\(line): \(function): %@", message())
+#endif
+}
+
+@available(macOS 11.0, *)
+extension Logger {
+    static let `default` = Logger(.default)
+    static let download = Logger(.download)
+    static let library = Logger(.library)
 }

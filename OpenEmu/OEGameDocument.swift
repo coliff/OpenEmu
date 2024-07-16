@@ -131,13 +131,11 @@ final class OEGameDocument: NSDocument {
         ])
     }()
     
-    @objc //OEPopoutGameWindowController
     private(set) var rom: OEDBRom!
     private(set) var romFileURL: URL!
     private(set) var corePlugin: OECorePlugin!
     private(set) var systemPlugin: OESystemPlugin!
     
-    @objc //OEPopoutGameWindowController
     private(set) var gameViewController: GameViewController!
     
     private(set) var cheats: [Cheat] = []
@@ -707,7 +705,7 @@ final class OEGameDocument: NSDocument {
            managerClass == OEThreadGameCoreManager.self {
             return OEThreadGameCoreManager(startupInfo: info, gameCoreOwner: self)
         } else {
-            return OEXPCGameCoreManager(startupInfo: info, gameCoreOwner: self)
+            return OEXPCGameCoreManager(startupInfo: info, gameCoreOwner: self, serviceName: "org.openemu.broker", helperExecutableName: "OpenEmuHelperApp")
         }
     }
     
@@ -806,9 +804,9 @@ final class OEGameDocument: NSDocument {
             if let plugin = OECorePlugin.corePlugin(bundleIdentifier: replacement) {
                 replacementName = plugin.displayName
             } else {
-                let repl = CoreUpdater.shared.coreList.firstIndex(where: { $0.bundleIdentifier.caseInsensitiveCompare(replacement) == .orderedSame })
+                let repl = CoreUpdater.shared.coreList.first(where: { $0.bundleIdentifier.caseInsensitiveCompare(replacement) == .orderedSame })
                 if let repl = repl {
-                    download = CoreUpdater.shared.coreList[repl]
+                    download = repl
                     replacementName = download?.name
                 }
             }
@@ -878,8 +876,8 @@ final class OEGameDocument: NSDocument {
                               styleMask: [.titled, .closable, .miniaturizable, .resizable],
                               backing: .buffered,
                               defer: true)
-        let windowController = OEPopoutGameWindowController(window: window)
-        windowController.isWindowFullScreen = fullScreen
+        let windowController = GameWindowController(window: window)
+        windowController.shouldShowWindowInFullScreen = fullScreen
         gameWindowController = windowController
         showWindows()
         
@@ -996,19 +994,16 @@ final class OEGameDocument: NSDocument {
         gameViewController.reflectEmulationPaused(false)
     }
     
-    @objc(emulationPaused) //OEPopoutGameWindowController
     var isEmulationPaused: Bool {
-        @objc(isEmulationPaused)
         get {
             return emulationStatus != .playing
         }
-        @objc(setEmulationPaused:)
         set(pauseEmulation) {
             if emulationStatus == .setup {
                 if !pauseEmulation {
                     startEmulation()
-                    return
                 }
+                return
             }
             if pauseEmulation {
                 enableOSSleep()
@@ -1052,7 +1047,6 @@ final class OEGameDocument: NSDocument {
     }
     
     @objc func setAdaptiveSyncEnabled(_ enabled: Bool) {
-        NSLog("setting adaptive sync: \(enabled)")
         gameCoreHelper?.setAdaptiveSyncEnabled(enabled)
     }
     
@@ -1133,7 +1127,6 @@ final class OEGameDocument: NSDocument {
     }
     
     /// Returns a filtered screenshot of the currently running core.
-    @objc //OEPopoutGameWindowController
     func screenshot() -> NSImage? {
         guard let rep = gameCoreManager?.captureOutputImage() else { return nil }
         let screenshot = NSImage(size: rep.size)
@@ -1343,15 +1336,12 @@ final class OEGameDocument: NSDocument {
     @IBAction func insertFile(_ sender: AnyObject?) {
         var archivedExtensions: [String] = []
         // The Archived Game document type lists all supported archive extensions, e.g. zip
-        let bundleInfo = Bundle.main.infoDictionary
-        let docTypes = bundleInfo?["CFBundleDocumentTypes"] as? [[String : Any]]
-        for docType in docTypes ?? [] {
-            if docType["CFBundleTypeName"] as? String == "Archived Game" {
-                if let extensions = docType["CFBundleTypeExtensions"] as? [String] {
-                    archivedExtensions.append(contentsOf: extensions)
-                }
-                break
-            }
+        if let bundleInfo = Bundle.main.infoDictionary,
+           let docTypes = bundleInfo["CFBundleDocumentTypes"] as? [[String : Any]],
+           let docType = docTypes.first(where: { $0["CFBundleTypeName"] as? String == "Archived Game" }),
+           let extensions = docType["CFBundleTypeExtensions"] as? [String]
+        {
+            archivedExtensions.append(contentsOf: extensions)
         }
         
         let validExtensions = archivedExtensions + systemPlugin.supportedTypeExtensions

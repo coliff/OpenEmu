@@ -203,9 +203,9 @@
 		<key>OENESButtonRight</key>
 		<string>OEControllerNintendoWiiUProControllerDPadRight</string>
 		<key>OENESButtonA</key>
-		<string>OEControllerNintendoWiiUProControllerButtonB</string>
+		<string>OEControllerNintendoWiiUProControllerButtonA</string>
 		<key>OENESButtonB</key>
-		<string>OEControllerNintendoWiiUProControllerButtonY</string>
+		<string>OEControllerNintendoWiiUProControllerButtonB</string>
 		<key>OENESButtonStart</key>
 		<string>OEControllerNintendoWiiUProControllerButtonPlus</string>
 		<key>OENESButtonSelect</key>
@@ -248,9 +248,9 @@
 		<key>OENESButtonUp</key>
 		<string>OEControllerNintendoSwitchProControllerDPadUp</string>
 		<key>OENESButtonA</key>
-		<string>OEControllerNintendoSwitchProControllerButtonB</string>
+		<string>OEControllerNintendoSwitchProControllerButtonA</string>
 		<key>OENESButtonB</key>
-		<string>OEControllerNintendoSwitchProControllerButtonY</string>
+		<string>OEControllerNintendoSwitchProControllerButtonB</string>
 		<key>OENESButtonStart</key>
 		<string>OEControllerNintendoSwitchProControllerButtonPlus</string>
 		<key>OENESButtonSelect</key>
@@ -268,6 +268,19 @@
 		<string>OEControllerNintendoSwitchSNESControllerButtonStart</string>
 		<key>OENESButtonSelect</key>
 		<string>OEControllerNintendoSwitchSNESControllerButtonSelect</string>
+	</dict>
+	<key>OEControllerNintendoSwitchN64Controller</key>
+	<dict>
+		<key>OENESButtonUp</key>
+		<string>OEControllerNintendoSwitchN64ControllerDPadUp</string>
+		<key>OENESButtonA</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonA</string>
+		<key>OENESButtonB</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonB</string>
+		<key>OENESButtonStart</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonStart</string>
+		<key>OENESButtonSelect</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonZ</string>
 	</dict>
 	<key>OEControllerMicrosoftXboxOne</key>
 	<dict>
@@ -365,6 +378,19 @@
 		<string>OEController8BitDoM30ButtonStart</string>
 		<key>OENESButtonSelect</key>
 		<string>OEController8BitDoM30ButtonMinus</string>
+	</dict>
+	<key>OEController8BitDoGBros</key>
+	<dict>
+		<key>OENESButtonUp</key>
+		<string>OEController8BitDoGBrosDPadUp</string>
+		<key>OENESButtonA</key>
+		<string>OEController8BitDoGBrosButtonA</string>
+		<key>OENESButtonB</key>
+		<string>OEController8BitDoGBrosButtonB</string>
+		<key>OENESButtonStart</key>
+		<string>OEController8BitDoGBrosButtonStart</string>
+		<key>OENESButtonSelect</key>
+		<string>OEController8BitDoGBrosButtonZ</string>
 	</dict>
 </dict>
 </plist>

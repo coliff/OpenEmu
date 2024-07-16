@@ -203,9 +203,9 @@
 		<key>OEGBButtonRight</key>
 		<string>OEControllerNintendoWiiUProControllerDPadRight</string>
 		<key>OEGBButtonA</key>
-		<string>OEControllerNintendoWiiUProControllerButtonB</string>
+		<string>OEControllerNintendoWiiUProControllerButtonA</string>
 		<key>OEGBButtonB</key>
-		<string>OEControllerNintendoWiiUProControllerButtonY</string>
+		<string>OEControllerNintendoWiiUProControllerButtonB</string>
 		<key>OEGBButtonStart</key>
 		<string>OEControllerNintendoWiiUProControllerButtonPlus</string>
 		<key>OEGBButtonSelect</key>
@@ -248,9 +248,9 @@
 		<key>OEGBButtonUp</key>
 		<string>OEControllerNintendoSwitchProControllerDPadUp</string>
 		<key>OEGBButtonA</key>
-		<string>OEControllerNintendoSwitchProControllerButtonB</string>
+		<string>OEControllerNintendoSwitchProControllerButtonA</string>
 		<key>OEGBButtonB</key>
-		<string>OEControllerNintendoSwitchProControllerButtonY</string>
+		<string>OEControllerNintendoSwitchProControllerButtonB</string>
 		<key>OEGBButtonStart</key>
 		<string>OEControllerNintendoSwitchProControllerButtonPlus</string>
 		<key>OEGBButtonSelect</key>
@@ -268,6 +268,19 @@
 		<string>OEControllerNintendoSwitchSNESControllerButtonStart</string>
 		<key>OEGBButtonSelect</key>
 		<string>OEControllerNintendoSwitchSNESControllerButtonSelect</string>
+	</dict>
+	<key>OEControllerNintendoSwitchN64Controller</key>
+	<dict>
+		<key>OEGBButtonUp</key>
+		<string>OEControllerNintendoSwitchN64ControllerDPadUp</string>
+		<key>OEGBButtonA</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonA</string>
+		<key>OEGBButtonB</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonB</string>
+		<key>OEGBButtonStart</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonStart</string>
+		<key>OEGBButtonSelect</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonZ</string>
 	</dict>
 	<key>OEControllerMicrosoftXboxOne</key>
 	<dict>
@@ -365,6 +378,19 @@
 		<string>OEController8BitDoM30ButtonStart</string>
 		<key>OEGBButtonSelect</key>
 		<string>OEController8BitDoM30ButtonMinus</string>
+	</dict>
+	<key>OEController8BitDoGBros</key>
+	<dict>
+		<key>OEGBButtonUp</key>
+		<string>OEController8BitDoGBrosDPadUp</string>
+		<key>OEGBButtonA</key>
+		<string>OEController8BitDoGBrosButtonA</string>
+		<key>OEGBButtonB</key>
+		<string>OEController8BitDoGBrosButtonB</string>
+		<key>OEGBButtonStart</key>
+		<string>OEController8BitDoGBrosButtonStart</string>
+		<key>OEGBButtonSelect</key>
+		<string>OEController8BitDoGBrosButtonZ</string>
 	</dict>
 </dict>
 </plist>

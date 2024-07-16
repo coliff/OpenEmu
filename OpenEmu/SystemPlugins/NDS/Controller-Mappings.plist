@@ -378,6 +378,27 @@
 		<key>OENDSButtonSelect</key>
 		<string>OEControllerNintendoSwitchSNESControllerButtonSelect</string>
 	</dict>
+	<key>OEControllerNintendoSwitchN64Controller</key>
+	<dict>
+		<key>OENDSButtonUp</key>
+		<string>OEControllerNintendoSwitchN64ControllerDPadUp</string>
+		<key>OENDSButtonA</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonCRight</string>
+		<key>OENDSButtonB</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonCDown</string>
+		<key>OENDSButtonX</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonCUp</string>
+		<key>OENDSButtonY</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonCLeft</string>
+		<key>OENDSButtonL</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonL</string>
+		<key>OENDSButtonR</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonR</string>
+		<key>OENDSButtonStart</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonStart</string>
+		<key>OENDSButtonSelect</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonZ</string>
+	</dict>
 	<key>OEControllerMicrosoftXboxOne</key>
 	<dict>
 		<key>OENDSButtonUp</key>
@@ -530,6 +551,27 @@
 		<string>OEController8BitDoM30ButtonStart</string>
 		<key>OENDSButtonSelect</key>
 		<string>OEController8BitDoM30ButtonMinus</string>
+	</dict>
+	<key>OEController8BitDoGBros</key>
+	<dict>
+		<key>OENDSButtonUp</key>
+		<string>OEController8BitDoGBrosDPadUp</string>
+		<key>OENDSButtonA</key>
+		<string>OEController8BitDoGBrosButtonA</string>
+		<key>OENDSButtonB</key>
+		<string>OEController8BitDoGBrosButtonB</string>
+		<key>OENDSButtonX</key>
+		<string>OEController8BitDoGBrosButtonX</string>
+		<key>OENDSButtonY</key>
+		<string>OEController8BitDoGBrosButtonY</string>
+		<key>OENDSButtonL</key>
+		<string>OEController8BitDoGBrosButtonL</string>
+		<key>OENDSButtonR</key>
+		<string>OEController8BitDoGBrosButtonR</string>
+		<key>OENDSButtonStart</key>
+		<string>OEController8BitDoGBrosButtonStart</string>
+		<key>OENDSButtonSelect</key>
+		<string>OEController8BitDoGBrosButtonZ</string>
 	</dict>
 </dict>
 </plist>

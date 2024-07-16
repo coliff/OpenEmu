@@ -50,17 +50,18 @@ public class ShaderControl: NSObject {
         }
     }
     
+    private(set) weak var document: OEGameDocument?
     public let systemPlugin: OESystemPlugin
     public var systemIdentifier: String { systemPlugin.systemIdentifier }
     @objc dynamic public private(set) var preset: ShaderPreset
     @objc dynamic public private(set) var presets: [ShaderPreset]
     
     private var systemShader: OESystemShaderModel? { preset.systemShader }
-    let helper: OEGameCoreHelper
+    var helper: OEGameCoreHelper? { document?.gameCoreHelper }
     
-    @objc public init(systemPlugin: OESystemPlugin, helper: OEGameCoreHelper) {
-        self.systemPlugin   = systemPlugin
-        self.helper         = helper
+    init(document: OEGameDocument) {
+        self.document = document
+        self.systemPlugin = document.systemPlugin
         self.preset         = Self.currentPreset(forSystemPlugin: systemPlugin)
         self.presets        = Self.shaderPresets(byShader: preset.shader.name, systemPlugin: systemPlugin)
     }
@@ -119,7 +120,7 @@ public class ShaderControl: NSObject {
     }
     
     public func setValue(_ value: CGFloat, forParameter name: String) {
-        helper.setShaderParameterValue(value, forKey: name)
+        helper?.setShaderParameterValue(value, forKey: name)
     }
     
     /// Change to the specified shader for the current core.
@@ -147,7 +148,7 @@ public class ShaderControl: NSObject {
         let params = preset.parameters as [String: NSNumber]?
         let shader = preset.shader
         
-        helper.setShaderURL(shader.url, parameters: params) { error in
+        helper?.setShaderURL(shader.url, parameters: params) { error in
             if let error = error {
                 handler?(error)
                 return
@@ -176,7 +177,7 @@ public class ShaderControl: NSObject {
     }
     
     static func presetForSystemShader(_ systemShader: OESystemShaderModel, _ systemPlugin: OESystemPlugin) -> ShaderPreset {
-        ShaderPreset(name: "Default \(systemShader.shader.name) preset for \(systemPlugin.displayName)",
+        ShaderPreset(name: .localizedStringWithFormat(NSLocalizedString("Default %@ preset for %@", comment: "1st parameter: shader name; 2nd parameter: system name"), systemShader.shader.name, systemPlugin.systemName),
                      systemShader: systemShader)
     }
 }

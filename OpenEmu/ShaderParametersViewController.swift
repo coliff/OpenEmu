@@ -150,7 +150,7 @@ final class ShaderParametersViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        shaderControl.helper.setEffectsMode(.displayAlways)
+        shaderControl.helper?.setEffectsMode(.displayAlways)
         
         shaderObserver = shaderControl.observe(\.preset) { [weak self] (_, _) in
             guard let self = self else { return }
@@ -174,7 +174,7 @@ final class ShaderParametersViewController: NSViewController {
     override func viewWillDisappear() {
         shaderObserver  = nil
         presetsObserver = nil
-        shaderControl.helper.setEffectsMode(.reflectPaused)
+        shaderControl.helper?.setEffectsMode(.reflectPaused)
     }
     
     private var _groups: [ShaderParamGroupValue]?
@@ -443,8 +443,13 @@ extension ShaderParametersViewController: NSMenuItemValidation {
     func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         switch menuItem.action {
         case #selector(paste(_:)):
-            guard let text = paramsFromClipboard() else { return false }
-            return ShaderPresetTextReader.isSignedAndValid(text: text)
+            if let text   = paramsFromClipboard(),
+               let preset = try? ShaderPresetTextReader.read(text: text)
+            {
+                return !preset.shader.isEmpty
+            } else {
+                return false
+            }
             
         case #selector(renamePreset(_:)), #selector(delete(_:)):
             if #available(macOS 10.15, *) {
@@ -487,7 +492,7 @@ extension ShaderParametersViewController {
         let name   = shaderControl.preset.shader.name
         let preset = ShaderPresetData(name: "Unnamed shader preset", shader: name, parameters: Dictionary(changedParams: params))
         guard
-            let text = try? ShaderPresetTextWriter().write(preset: preset, options: [.shader, .sign])
+            let text = try? ShaderPresetTextWriter.write(preset: preset, options: [.shader])
         else { return }
         paramsToClipboard(text)
     }
@@ -495,7 +500,7 @@ extension ShaderParametersViewController {
     @IBAction func paste(_ sender: Any) {
         guard
             let text   = paramsFromClipboard(),
-            let preset = try? ShaderPresetTextReader().read(text: text),
+            let preset = try? ShaderPresetTextReader.read(text: text),
             !preset.shader.isEmpty
         else { return }
         
@@ -507,10 +512,10 @@ extension ShaderParametersViewController {
                 vc.params?.apply(parameters: changed)
             }
             params.apply(parameters: preset.parameters)
-            undoManager?.setActionName(NSLocalizedString("Paste paramaters", comment: "undo: Paste parameter values"))
+            undoManager?.setActionName(NSLocalizedString("Paste parameters", comment: "undo: Paste parameter values"))
         } else {
             guard
-                let params = try? ShaderPresetTextWriter().write(preset: preset, options: [])
+                let params = try? ShaderPresetTextWriter.write(preset: preset, options: [])
             else { return }
             
             if let shader = OEShaderStore.shared.shader(withName: preset.shader) {

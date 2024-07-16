@@ -118,11 +118,13 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.3.3</string>
+	<string>2.4.1</string>
 	<key>CFBundleVersion</key>
-	<string>2.3.3</string>
+	<string>2.4.1</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.games</string>
+	<key>NSPrefersDisplaySafeAreaCompatibilityMode</key>
+	<false/>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSAccentColorName</key>
@@ -148,19 +150,14 @@
 	<string>https://raw.github.com/OpenEmu/OpenEmu-Update/master/oecores.xml</string>
 	<key>OELongBuildVersion</key>
 	<string></string>
-	<key>OpenEmuKit</key>
-	<dict>
-		<key>XPCBrokerServiceName</key>
-		<string>org.openemu.broker</string>
-		<key>XPCHelperExecutableName</key>
-		<string>OpenEmuHelperApp</string>
-	</dict>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>
 	<string>https://raw.github.com/OpenEmu/OpenEmu-Update/master/appcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
+	<key>SUPublicEDKey</key>
+	<string>lI9DtKt5iDVR48ifKaP94mrFrHwYn75bfQLr+0alpRY=</string>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>

@@ -251,9 +251,9 @@
 		<key>OEGBAButtonRight</key>
 		<string>OEControllerNintendoWiiUProControllerDPadRight</string>
 		<key>OEGBAButtonA</key>
-		<string>OEControllerNintendoWiiUProControllerButtonB</string>
+		<string>OEControllerNintendoWiiUProControllerButtonA</string>
 		<key>OEGBAButtonB</key>
-		<string>OEControllerNintendoWiiUProControllerButtonY</string>
+		<string>OEControllerNintendoWiiUProControllerButtonB</string>
 		<key>OEGBAButtonL</key>
 		<string>OEControllerNintendoWiiUProControllerButtonL</string>
 		<key>OEGBAButtonR</key>
@@ -308,9 +308,9 @@
 		<key>OEGBAButtonUp</key>
 		<string>OEControllerNintendoSwitchProControllerDPadUp</string>
 		<key>OEGBAButtonA</key>
-		<string>OEControllerNintendoSwitchProControllerButtonB</string>
+		<string>OEControllerNintendoSwitchProControllerButtonA</string>
 		<key>OEGBAButtonB</key>
-		<string>OEControllerNintendoSwitchProControllerButtonY</string>
+		<string>OEControllerNintendoSwitchProControllerButtonB</string>
 		<key>OEGBAButtonL</key>
 		<string>OEControllerNintendoSwitchProControllerButtonL</string>
 		<key>OEGBAButtonR</key>
@@ -336,6 +336,23 @@
 		<string>OEControllerNintendoSwitchSNESControllerButtonStart</string>
 		<key>OEGBAButtonSelect</key>
 		<string>OEControllerNintendoSwitchSNESControllerButtonSelect</string>
+	</dict>
+	<key>OEControllerNintendoSwitchN64Controller</key>
+	<dict>
+		<key>OEGBAButtonUp</key>
+		<string>OEControllerNintendoSwitchN64ControllerDPadUp</string>
+		<key>OEGBAButtonA</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonA</string>
+		<key>OEGBAButtonB</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonB</string>
+		<key>OEGBAButtonL</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonL</string>
+		<key>OEGBAButtonR</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonR</string>
+		<key>OEGBAButtonStart</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonStart</string>
+		<key>OEGBAButtonSelect</key>
+		<string>OEControllerNintendoSwitchN64ControllerButtonZ</string>
 	</dict>
 	<key>OEControllerMicrosoftXboxOne</key>
 	<dict>
@@ -461,6 +478,23 @@
 		<string>OEController8BitDoM30ButtonStart</string>
 		<key>OEGBAButtonSelect</key>
 		<string>OEController8BitDoM30ButtonMinus</string>
+	</dict>
+	<key>OEController8BitDoGBros</key>
+	<dict>
+		<key>OEGBAButtonUp</key>
+		<string>OEController8BitDoGBrosDPadUp</string>
+		<key>OEGBAButtonA</key>
+		<string>OEController8BitDoGBrosButtonA</string>
+		<key>OEGBAButtonB</key>
+		<string>OEController8BitDoGBrosButtonB</string>
+		<key>OEGBAButtonL</key>
+		<string>OEController8BitDoGBrosButtonL</string>
+		<key>OEGBAButtonR</key>
+		<string>OEController8BitDoGBrosButtonR</string>
+		<key>OEGBAButtonStart</key>
+		<string>OEController8BitDoGBrosButtonStart</string>
+		<key>OEGBAButtonSelect</key>
+		<string>OEController8BitDoGBrosButtonZ</string>
 	</dict>
 </dict>
 </plist>

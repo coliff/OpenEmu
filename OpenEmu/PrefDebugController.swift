@@ -75,12 +75,12 @@ final class PrefDebugController: NSViewController {
         Checkbox(key: OETakeNativeScreenshots, label: "Take screenshots in native size"),
         Checkbox(key: OEScreenshotAspectRatioCorrectionDisabled, label: "Disable aspect ratio correction in screenshots"),
         Checkbox(key: OEPopoutGameWindowTreatScaleFactorAsPixels, label: "Change scale menu unit from points to pixels"),
-        Checkbox(key: OEAdaptiveSyncEnabledKey, label: "Enable adaptive sync for supported displays in full screen"),
+        Checkbox(key: OEAdaptiveSyncEnabledKey, label: "Enable adaptive sync for supported displays (full screen)"),
         Popover(key: OEAppearance.HUDBar.key, label: "Appearance:", action: #selector(changeHUDBarAppearance(_:)), options: [
             Option(label: "Vibrant", value: OEAppearance.HUDBar.vibrant.rawValue),
             Option(label: "Dark", value: OEAppearance.HUDBar.dark.rawValue),
         ]),
-        ColorWell(key: OEGameViewBackgroundColorKey, label: "Game View Background color:"),
+        ColorWell(key: OEPopoutGameWindowBackgroundColorKey, label: "Game View Background color:"),
         
         Separator(),
         
@@ -272,10 +272,15 @@ final class PrefDebugController: NSViewController {
             popup.action = action
             popup.target = self
             
-            for (index, option) in options.enumerated() {
-                popup.addItem(withTitle: NSLocalizedString(option.label, tableName: "Debug", comment: ""))
-                popup.item(at: index)?.representedObject = option.value
+            let menu = NSMenu()
+            for option in options {
+                let item = NSMenuItem()
+                item.title = NSLocalizedString(option.label, tableName: "Debug", comment: "")
+                item.representedObject = option.value
+                menu.addItem(item)
             }
+            popup.menu = menu
+            
             setUpSelectedItem(for: popup, item: item)
             popup.sizeToFit()
             
@@ -328,23 +333,11 @@ final class PrefDebugController: NSViewController {
     private func setUpSelectedItem(for button: NSPopUpButton, item: Popover) {
         
         let key = item.key
-        
-        if key == OEGameCoreManagerModePreferenceKey {
-            let currentValue = UserDefaults.standard.string(forKey: key)
-            for (index, item) in button.itemArray.enumerated() {
-                if item.representedObject as? String == currentValue {
-                    button.selectItem(at: index)
-                    return
-                }
-            }
-        }
-        
         let currentValue = UserDefaults.standard.object(forKey: key)
         
-        for (index, item) in button.itemArray.enumerated() {
-            if item.representedObject as? Int == currentValue as? Int {
-                button.selectItem(at: index)
-            }
+        let index = button.indexOfItem(withRepresentedObject: currentValue)
+        if index != -1 {
+            button.selectItem(at: index)
         }
     }
 }
